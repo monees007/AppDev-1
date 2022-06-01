@@ -24,7 +24,7 @@ def plot(freqdist):
     # print(freqdist)
     freqdist.sort()
 
-    plt.hist(freqdist, bins=[20,40,60,80,100])
+    plt.hist(freqdist, bins=[20, 40, 60, 80, 100])
 
     plt.savefig('static/foo.png')
 
@@ -36,10 +36,10 @@ def s():
         # print(id)
         flag = 0
         for x in data:
-            if str(id) in x[0] and request.form.get('ID', None) == 'student_id':
+            if str(id) == x[0].strip() and request.form.get('ID', None) == 'student_id':
                 flag = 1
 
-            if str(id) in x[1] and request.form.get('ID', None) == 'course_id':
+            if str(id) == x[1].strip() and request.form.get('ID', None) == 'course_id':
                 flag = 1
 
         if flag == 0:
@@ -50,7 +50,7 @@ def s():
             tot = 0
             for x in data:
                 # print(x)
-                if id in x[0]:
+                if id == x[0].strip():
                     tot += int(x[2])
                     stud1.append(x)
             # Template(stud2).stream(len=len(stud1), stud=stud1, total_=tot).dump('templates/output.html')
@@ -67,12 +67,7 @@ def s():
                     if int(x[2]) > max:
                         max = int(x[2])
                     freq.append(int(x[2]))
-                    # print(total,count,max)
 
-
-            # Template(crud2).stream(average=total / count, max=max).dump('output.html')
-
-            # print(freqdist)
             plot(freq)
             return render_template('crud.html', average=total / count, max=max)
 
