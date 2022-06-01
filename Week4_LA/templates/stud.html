@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1> Student Details </h1>
+<table border="2px">
+    <tr>
+        <th>
+            Student id
+        </th>
+        <th>
+            Course id
+        </th>
+        <th>
+            Marks id
+        </th>
+    </tr>
+    {% for i in range(len) %}
+    <tr>
+        <td>
+            {{ stud[i][0] }}
+        </td>
+        <td>
+            {{ stud[i][1] }}
+        </td>
+        <td>
+            {{ stud[i][2] }}
+        </td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="2" style="text-align: center;">
+
+                Total Marks
+
+        </td>
+        <td>
+            {{ total_ }}
+        </td>
+    </tr>
+</table>
+<br>
+<a href="/">Go Back</a>
+</body>
+</html>
